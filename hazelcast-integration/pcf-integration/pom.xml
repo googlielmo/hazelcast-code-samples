@@ -33,6 +33,14 @@
             <id>Hazelcast Private Release Repository</id>
             <url>https://repository-hazelcast-l337.forge.cloudbees.com/release/</url>
         </repository>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <url>http://repo1.maven.org/maven2</url>
+        </repository>
     </repositories>
 
     <!-- adding SpringBoot BOM -->
@@ -57,6 +65,7 @@
         </dependency>
 
         <dependency>
+
             <groupId>com.hazelcast.samples</groupId>
             <artifactId>helper</artifactId>
             <version>${project.version}</version>

@@ -1,6 +1,6 @@
 ---
 applications:
-- name: hazelcast-pcf-dt
+- name: hazelcast-openssl
   memory: 2048M
   instances: 1
   path: target/pcf-integration-0.1-SNAPSHOT.jar

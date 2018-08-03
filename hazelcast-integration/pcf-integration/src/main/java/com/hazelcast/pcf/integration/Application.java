@@ -24,23 +24,20 @@ import java.util.Properties;
 public class Application {
 
     private static ClientConfig clientConfig;
-    private static File ksFile, tsFile;
+    private static File tsFile;
     private static final String pwd = "123456";
 
     @Bean
     public HazelcastInstance hazelcastClient() {
         Properties clientSslProps = new Properties();
-        clientSslProps.setProperty("javax.net.ssl.trustStore", tsFile.getAbsolutePath());
-        clientSslProps.setProperty("javax.net.ssl.trustStorePassword", pwd);
+        clientSslProps.setProperty("trustStore", tsFile.getAbsolutePath());
+        clientSslProps.setProperty("trustStorePassword", pwd);
         clientConfig.getNetworkConfig().setSSLConfig(new SSLConfig().setEnabled(true).setProperties(clientSslProps));
         clientConfig.setLicenseKey("UNLIMITED_LICENSE#99Nodes#VuE0OIH7TbfKwAUNmSj1JlyFkr6a53911000199920009119011112151009");
         return HazelcastClient.newHazelcastClient(clientConfig);
     }
 
     public static void extractKSTS() throws IOException {
-        System.out.println("extracting keystore");
-        InputStream ksStream = Application.class.getResourceAsStream("/keystore");
-        ksFile = copyToTemp(ksStream, "keystore");
         System.out.println("extracting truststore");
         InputStream tsStream = Application.class.getResourceAsStream("/truststore");
         tsFile = copyToTemp(tsStream, "truststore");
