@@ -18,8 +18,8 @@ public class MainServlet extends HttpServlet {
         try {
             InitialContext ic = new InitialContext();
 
-            DistributedMap map = (DistributedMap) ic.lookup("some-hz-map");
-            System.out.println("Found 'some-hz-map' via JNDI: " + map);
+            DistributedMap map = (DistributedMap) ic.lookup("popopo");
+            System.out.println("Found 'popopo' via JNDI: " + map);
 
             Object putResult = map.put("the key", "the value", 1000, 1000, EntryInfo.SHARED_PUSH_PULL,
                     new Object[]{"dep1", "dep2"});
